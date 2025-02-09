@@ -1,0 +1,50 @@
+{
+    "conversationMetrics": {
+      "totalConversations": {
+        "value": 42,
+        "trend": 15,
+        "timeframe": "vs last week"
+      },
+      "avgSentiment": {
+        "value": 8.5,
+        "trend": 0.5,
+        "timeframe": "vs last week"
+      },
+      "productMatchRate": {
+        "value": 78,
+        "trend": 5,
+        "timeframe": "vs last week"
+      }
+    },
+    "topTriggerWords": [
+      {
+        "word": "expansion",
+        "count": 15
+      },
+      {
+        "word": "savings",
+        "count": 12
+      }
+    ],
+    "sentimentTrend": [
+      {
+        "date": "Mon",
+        "positive": 75,
+        "neutral": 20,
+        "negative": 5
+      }
+    ],
+    "productRecommendations": [
+      {
+        "name": "Business Loan",
+        "matches": 28,
+        "confidence": 85
+      }
+    ],
+    "customerSegments": [
+      {
+        "segment": "Small Business",
+        "percentage": 45
+      }
+    ]
+  }

@@ -1,0 +1,71 @@
+[
+    {
+      "id": "business_loan",
+      "name": "Business Expansion Loan",
+      "description": "Flexible financing for business growth",
+      "interest_rate": 0.085,
+      "quick_pitch": "Perfect for funding your business expansion with competitive rates",
+      "details": [
+        "Loan amounts up to $500,000",
+        "Flexible repayment terms",
+        "No early repayment fees",
+        "Quick approval process"
+      ],
+      "faq": [
+        {
+          "q": "What's the maximum loan amount?",
+          "a": "Up to $500,000 based on business performance"
+        },
+        {
+          "q": "What's the approval time?",
+          "a": "72 hours for initial approval"
+        }
+      ]
+    },
+    {
+      "id": "premium_savings",
+      "name": "Premium Business Savings",
+      "description": "High-yield savings account for businesses",
+      "interest_rate": 0.045,
+      "quick_pitch": "Earn more on your business surplus with our premium rates",
+      "details": [
+        "4.5% annual interest rate",
+        "No minimum balance",
+        "Free business banking tools",
+        "Mobile banking access"
+      ],
+      "faq": [
+        {
+          "q": "Is there a minimum balance requirement?",
+          "a": "No minimum balance required"
+        },
+        {
+          "q": "Are there any monthly fees?",
+          "a": "No monthly fees for businesses"
+        }
+      ]
+    },
+    {
+      "id": "freelancer_account",
+      "name": "Freelancer Banking Suite",
+      "description": "Specialized account for freelancers and contractors",
+      "interest_rate": 0.035,
+      "quick_pitch": "Banking solutions designed for the modern freelancer",
+      "details": [
+        "Integrated invoicing tools",
+        "Tax planning assistance",
+        "International transfers",
+        "Expense tracking"
+      ],
+      "faq": [
+        {
+          "q": "Can I accept international payments?",
+          "a": "Yes, with competitive forex rates"
+        },
+        {
+          "q": "What tax features are included?",
+          "a": "Automated tax calculations and reports"
+        }
+      ]
+    }
+  ]

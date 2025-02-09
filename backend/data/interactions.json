@@ -1,0 +1,164 @@
+[
+  {
+    "id": 1,
+    "customer": {
+      "phone_number": "1234567890",
+      "name": "Hai Pham",
+      "businessInsights": {
+        "segment": "Payroll",
+        "age": 42,
+        "aum": 5000000000,
+        "industry": "Retail",
+        "status": "high_potential"
+      },
+      "financialGoals": [
+        "Business expansion capital",
+        "Better cash flow management"
+      ]
+    },
+    "timestamp": "2024-02-05T14:30:00",
+    "date": "2024-02-05",
+    "platform": "Grab",
+    "analysisComplete": true,
+    "conversationAnalysis": {
+      "summary": [
+        "Customer showed strong interest in payroll solution",
+        "Looking for efficient cash management system",
+        "Current AUM indicates significant growth potential"
+      ],
+      "keyTopics": [
+        {
+          "topic": "Payroll Management",
+          "confidence": 0.95
+        }
+      ],
+      "keywords": [
+        "payroll",
+        "cash flow",
+        "management"
+      ],
+      "sentiment": {
+        "positive": 0.8,
+        "neutral": 0.15,
+        "negative": 0.05
+      },
+      "productMatches": [
+        {
+          "product": "Premium Payroll Solution",
+          "confidence": 0.92,
+          "reasons": [
+            "High AUM indicates large employee base",
+            "Current system needs upgrade",
+            "Looking for efficiency"
+          ],
+          "features": [
+            "Automated salary processing",
+            "Tax management",
+            "Employee self-service portal"
+          ]
+        }
+      ]
+    },
+    "nextSteps": [
+      {
+        "action": "Schedule product demo",
+        "priority": "high",
+        "deadline": "2024-02-12",
+        "status": "pending"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "customer": {
+      "phone_number": "0988359922",
+      "name": "Son Le",
+      "businessInsights": {
+        "segment": "Business Owner",
+        "age": 35,
+        "aum": 0,
+        "industry": "Retail",
+        "status": "medium"
+      },
+      "financialGoals": [],
+      "nbo": [],
+      "nba": []
+    },
+    "timestamp": "2025-02-06T22:56:01.291805",
+    "date": "2025-02-06",
+    "platform": "Xanh SM",
+    "status": "high_potential",
+    "analysisComplete": false,
+    "conversationAnalysis": null,
+    "nextSteps": [
+      {
+        "action": "Follow up call",
+        "priority": "high",
+        "deadline": "2025-02-09",
+        "status": "pending"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "customer": {
+      "phone_number": "0977345678",
+      "name": "Hoang Le",
+      "businessInsights": {
+        "segment": "Business Owner",
+        "age": 35,
+        "aum": 0,
+        "industry": "Retail",
+        "status": "medium"
+      },
+      "financialGoals": [],
+      "nbo": [],
+      "nba": []
+    },
+    "timestamp": "2025-02-08T18:59:55.397257",
+    "date": "2025-02-08",
+    "platform": "Xanh SM",
+    "status": "high_potential",
+    "analysisComplete": false,
+    "conversationAnalysis": null,
+    "nextSteps": [
+      {
+        "action": "Follow up call",
+        "priority": "high",
+        "deadline": "2025-02-11",
+        "status": "pending"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "customer": {
+      "phone_number": "0988359922",
+      "name": "Son Le",
+      "businessInsights": {
+        "segment": "Business Owner",
+        "age": 35,
+        "aum": 0,
+        "industry": "Retail",
+        "status": "medium"
+      },
+      "financialGoals": [],
+      "nbo": [],
+      "nba": []
+    },
+    "timestamp": "2025-02-08T19:16:54.151391",
+    "date": "2025-02-08",
+    "platform": "Xanh SM",
+    "status": "high_potential",
+    "analysisComplete": false,
+    "conversationAnalysis": null,
+    "nextSteps": [
+      {
+        "action": "Follow up call",
+        "priority": "high",
+        "deadline": "2025-02-11",
+        "status": "pending"
+      }
+    ]
+  }
+]

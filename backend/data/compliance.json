@@ -1,0 +1,197 @@
+{
+  "status": "in_review",
+  "active_compliance_checks": [
+    {
+      "interaction_id": 1,
+      "status": "in_review",
+      "checkpoints": [
+        {
+          "category": "Product Discussion",
+          "items": [
+            {
+              "text": "Clear product term disclosure",
+              "required": true,
+              "completed": true
+            },
+            {
+              "text": "Fee structure explanation",
+              "required": true,
+              "completed": false
+            },
+            {
+              "text": "Risk disclosure",
+              "required": true,
+              "completed": true
+            }
+          ]
+        },
+        {
+          "category": "Customer Protection",
+          "items": [
+            {
+              "text": "Explicit consent obtained",
+              "required": true,
+              "completed": true
+            },
+            {
+              "text": "Data privacy maintained",
+              "required": true,
+              "completed": true
+            }
+          ]
+        }
+      ],
+      "customer_name": "Hai Pham",
+      "ride_date": "2024-02-05"
+    },
+    {
+      "interaction_id": 2,
+      "status": "in_review",
+      "checkpoints": [
+        {
+          "category": "Product Discussion",
+          "items": [
+            {
+              "text": "Clear product term disclosure",
+              "required": true,
+              "completed": false
+            },
+            {
+              "text": "Fee structure explanation",
+              "required": true,
+              "completed": false
+            },
+            {
+              "text": "Risk disclosure",
+              "required": true,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "category": "Customer Protection",
+          "items": [
+            {
+              "text": "Explicit consent obtained",
+              "required": true,
+              "completed": false
+            },
+            {
+              "text": "Data privacy maintained",
+              "required": true,
+              "completed": false
+            }
+          ]
+        }
+      ],
+      "customer_name": "Son Le",
+      "ride_date": "2025-02-06"
+    },
+    {
+      "interaction_id": 3,
+      "status": "in_review",
+      "checkpoints": [
+        {
+          "category": "Product Discussion",
+          "items": [
+            {
+              "text": "Clear product term disclosure",
+              "required": true,
+              "completed": false
+            },
+            {
+              "text": "Fee structure explanation",
+              "required": true,
+              "completed": false
+            },
+            {
+              "text": "Risk disclosure",
+              "required": true,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "category": "Customer Protection",
+          "items": [
+            {
+              "text": "Explicit consent obtained",
+              "required": true,
+              "completed": false
+            },
+            {
+              "text": "Data privacy maintained",
+              "required": true,
+              "completed": false
+            }
+          ]
+        }
+      ],
+      "customer_name": "Hoang Le",
+      "ride_date": "2025-02-08"
+    },
+    {
+      "interaction_id": 4,
+      "status": "in_review",
+      "checkpoints": [
+        {
+          "category": "Product Discussion",
+          "items": [
+            {
+              "text": "Clear product term disclosure",
+              "required": true,
+              "completed": false
+            },
+            {
+              "text": "Fee structure explanation",
+              "required": true,
+              "completed": false
+            },
+            {
+              "text": "Risk disclosure",
+              "required": true,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "category": "Customer Protection",
+          "items": [
+            {
+              "text": "Explicit consent obtained",
+              "required": true,
+              "completed": false
+            },
+            {
+              "text": "Data privacy maintained",
+              "required": true,
+              "completed": false
+            }
+          ]
+        }
+      ],
+      "customer_name": "Son Le",
+      "ride_date": "2025-02-08"
+    }
+  ],
+  "previous_compliance_checks": [],
+  "guidelines": {
+    "doList": [
+      "Clearly explain all product features",
+      "Disclose all fees and charges",
+      "Get explicit consent for data collection",
+      "Maintain professional conversation tone"
+    ],
+    "dontList": [
+      "Make guarantees about approval",
+      "Promise specific returns",
+      "Share customer information",
+      "Use high-pressure sales tactics"
+    ],
+    "requiredPhrases": [
+      "This is subject to terms and conditions",
+      "Processing time may vary",
+      "Let me explain the fee structure"
+    ]
+  }
+}

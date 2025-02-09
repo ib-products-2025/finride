@@ -1,0 +1,58 @@
+[
+  {
+    "phone_number": "1234567890",
+    "name": "Hai Pham",
+    "businessInsights": {
+      "segment": "Payroll",
+      "age": 42,
+      "aum": 5000000000,
+      "industry": "Retail",
+      "status": "high_potential"
+    },
+    "financialGoals": [
+      "Business expansion capital",
+      "Better cash flow management"
+    ],
+    "nbo": [
+      {
+        "product": "Premium Payroll Solution",
+        "confidence": 0.92,
+        "reasons": [
+          "High AUM indicates large employee base",
+          "Current system needs upgrade",
+          "Looking for efficiency"
+        ],
+        "features": [
+          "Automated salary processing",
+          "Tax management",
+          "Employee self-service portal"
+        ]
+      }
+    ],
+    "nba": [
+      {
+        "action": "Schedule product demo",
+        "priority": "high",
+        "deadline": "2024-02-12",
+        "status": "pending"
+      }
+    ]
+  },
+  {
+    "phone_number": "0988359922",
+    "name": "Son Le",
+    "businessInsights": {
+      "segment": "Business Owner",
+      "age": 35,
+      "aum": 0,
+      "industry": "Retail",
+      "status": "medium"
+    },
+    "financialGoals": [
+      "TD",
+      " Stock"
+    ],
+    "nbo": [],
+    "nba": []
+  }
+]
