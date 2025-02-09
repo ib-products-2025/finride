@@ -1,7 +1,7 @@
 class BusinessInsights {
-  final String segment;  // Business Owner, Household or Payroll
+  final String segment;
   final int age;
-  final double aum;  // in VND billions
+  final double aum;
   final String industry;
   final String status;
 
@@ -15,11 +15,11 @@ class BusinessInsights {
 
   factory BusinessInsights.fromJson(Map<String, dynamic> json) {
     return BusinessInsights(
-      segment: json['segment'],
-      age: json['age'],
-      aum: json['aum'].toDouble(),
-      industry: json['industry'],
-      status: json['status'],
+      segment: json['segment'] ?? 'Unknown',
+      age: json['age'] ?? 0,
+      aum: (json['aum'] ?? 0).toDouble(),
+      industry: json['industry'] ?? 'Unknown',
+      status: json['status'] ?? 'Unknown',
     );
   }
 

@@ -79,98 +79,98 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
     final color = customer.businessInsights.status == 'high_potential' ? Colors.purple : Colors.orange;
 
     return Card(
-    margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-    child: InkWell(
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: InkWell(
         onTap: () => setState(() => _selectedCustomer = customer),
         child: Container(
-        decoration: BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
-            left: BorderSide(
+              left: BorderSide(
                 color: color,
                 width: 4,
+              ),
             ),
-            ),
-        ),
-        padding: const EdgeInsets.all(16),
-        child: Column(
+          ),
+          padding: const EdgeInsets.all(16),
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-            Row(
+              Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                Expanded(
+                  Expanded(
                     child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
                         Text(
-                        customer.name,
-                        style: const TextStyle(
+                          customer.name,
+                          style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
-                        ),
+                          ),
                         ),
                         Text(
-                        'Segment: ${customer.businessInsights.segment}',
-                        style: const TextStyle(
+                          'Segment: ${customer.businessInsights.segment}',
+                          style: const TextStyle(
                             color: Colors.grey,
                             fontSize: 14,
+                          ),
                         ),
-                        ),
-                    ],
+                      ],
                     ),
-                ),
-                Container(
+                  ),
+                  Container(
                     padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 4,
+                      horizontal: 8,
+                      vertical: 4,
                     ),
                     decoration: BoxDecoration(
-                    color: color.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(16),
+                      color: color.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(16),
                     ),
                     child: Text(
-                    customer.businessInsights.industry,
-                    style: TextStyle(
+                      customer.businessInsights.industry,
+                      style: TextStyle(
                         color: color,
                         fontSize: 12,
+                      ),
                     ),
-                    ),
-                ),
+                  ),
                 ],
-            ),
-            const SizedBox(height: 16),
-            Container(
+              ),
+              const SizedBox(height: 16),
+              Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                color: Colors.grey[50],
-                borderRadius: BorderRadius.circular(4),
+                  color: Colors.grey[50],
+                  borderRadius: BorderRadius.circular(4),
                 ),
                 child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     const Text(
-                    'Profile:',
-                    style: TextStyle(
+                      'Profile:',
+                      style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
-                    ),
+                      ),
                     ),
                     const SizedBox(height: 4),
                     Text(
-                    'Age: ${customer.businessInsights.age}',
-                    style: const TextStyle(fontSize: 12),
+                      'Age: ${customer.businessInsights.age}',
+                      style: const TextStyle(fontSize: 12),
                     ),
                     Text(
-                    'AUM: ${customer.businessInsights.aum} billion VND',
-                    style: const TextStyle(fontSize: 12),
+                      'AUM: ${customer.businessInsights.aum} billion VND',
+                      style: const TextStyle(fontSize: 12),
                     ),
-                ],
+                  ],
                 ),
-            ),
+              ),
             ],
+          ),
         ),
-        ),
-    ),
+      ),
     );
   }
 
@@ -183,405 +183,405 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
     final aumController = TextEditingController(text: customer.businessInsights.aum.toString());
     final statusController = TextEditingController(text: customer.businessInsights.status);
     final financialGoalsController = TextEditingController(
-    text: customer.financialGoals.join('\n')
+      text: customer.financialGoals.join('\n')
     );
 
     return SingleChildScrollView(
-    child: Card(
+      child: Card(
         margin: const EdgeInsets.all(16),
         child: ConstrainedBox(
-        constraints: BoxConstraints(
+          constraints: BoxConstraints(
             minWidth: MediaQuery.of(context).size.width - 32,
-        ),
-        child: Column(
+          ),
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-            // Header
-            Padding(
+              // Header
+              Padding(
                 padding: const EdgeInsets.all(16),
                 child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
                     Expanded(
-                    child: Column(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                        Text(
+                          Text(
                             customer.name,
                             style: const TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w300,
+                              fontSize: 24,
+                              fontWeight: FontWeight.w300,
                             ),
                             overflow: TextOverflow.ellipsis,
-                        ),
-                        Text(
+                          ),
+                          Text(
                             customer.businessInsights.segment,
                             style: const TextStyle(color: Colors.grey),
                             overflow: TextOverflow.ellipsis,
-                        ),
+                          ),
                         ],
-                    ),
+                      ),
                     ),
                     IconButton(
-                    icon: const Icon(Icons.edit),
-                    onPressed: () {
+                      icon: const Icon(Icons.edit),
+                      onPressed: () {
                         showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
                             title: const Text('Edit Customer'),
                             content: SingleChildScrollView(
-                            child: Form(
+                              child: Form(
                                 key: formKey,
                                 child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
                                     TextFormField(
-                                    controller: nameController,
-                                    decoration: const InputDecoration(labelText: 'Name'),
-                                    validator: (value) => 
+                                      controller: nameController,
+                                      decoration: const InputDecoration(labelText: 'Name'),
+                                      validator: (value) => 
                                         value?.isEmpty ?? true ? 'Required' : null,
                                     ),
                                     const SizedBox(height: 16),
                                     DropdownButtonFormField<String>(
-                                    value: segmentController.text,
-                                    decoration: const InputDecoration(labelText: 'Segment'),
-                                    items: ['Business Owner', 'Household', 'Payroll']
+                                      value: segmentController.text,
+                                      decoration: const InputDecoration(labelText: 'Segment'),
+                                      items: ['Business Owner', 'Household', 'Payroll']
                                         .map((s) => DropdownMenuItem(value: s, child: Text(s)))
                                         .toList(),
-                                    onChanged: (value) => segmentController.text = value!,
+                                      onChanged: (value) => segmentController.text = value!,
                                     ),
                                     const SizedBox(height: 16),
                                     DropdownButtonFormField<String>(
-                                    value: industryController.text,
-                                    decoration: const InputDecoration(labelText: 'Industry'),
-                                    items: ['Retail', 'Technology', 'Manufacturing', 'Services']
+                                      value: industryController.text,
+                                      decoration: const InputDecoration(labelText: 'Industry'),
+                                      items: ['Retail', 'Technology', 'Manufacturing', 'Services']
                                         .map((i) => DropdownMenuItem(value: i, child: Text(i)))
                                         .toList(),
-                                    onChanged: (value) => industryController.text = value!,
+                                      onChanged: (value) => industryController.text = value!,
                                     ),
                                     const SizedBox(height: 16),
                                     TextFormField(
-                                    controller: ageController,
-                                    decoration: const InputDecoration(labelText: 'Age'),
-                                    keyboardType: TextInputType.number,
-                                    validator: (value) => 
+                                      controller: ageController,
+                                      decoration: const InputDecoration(labelText: 'Age'),
+                                      keyboardType: TextInputType.number,
+                                      validator: (value) => 
                                         value?.isEmpty ?? true ? 'Required' : null,
                                     ),
                                     const SizedBox(height: 16),
                                     TextFormField(
-                                    controller: aumController,
-                                    decoration: const InputDecoration(labelText: 'AUM (billion VND)'),
-                                    keyboardType: TextInputType.number,
-                                    validator: (value) => 
+                                      controller: aumController,
+                                      decoration: const InputDecoration(labelText: 'AUM (billion VND)'),
+                                      keyboardType: TextInputType.number,
+                                      validator: (value) => 
                                         value?.isEmpty ?? true ? 'Required' : null,
                                     ),
                                     const SizedBox(height: 16),
                                     DropdownButtonFormField<String>(
-                                    value: statusController.text,
-                                    decoration: const InputDecoration(labelText: 'Status'),
-                                    items: ['high_potential', 'medium', 'low']
+                                      value: statusController.text,
+                                      decoration: const InputDecoration(labelText: 'Status'),
+                                      items: ['high_potential', 'medium', 'low']
                                         .map((s) => DropdownMenuItem(value: s, child: Text(s)))
                                         .toList(),
-                                    onChanged: (value) => statusController.text = value!,
+                                      onChanged: (value) => statusController.text = value!,
                                     ),
                                     const SizedBox(height: 16),
                                     TextFormField(
-                                    controller: financialGoalsController,
-                                    decoration: const InputDecoration(
+                                      controller: financialGoalsController,
+                                      decoration: const InputDecoration(
                                         labelText: 'Financial Goals (one per line)',
                                         helperText: 'Enter each goal on a new line'
+                                      ),
+                                      maxLines: 5,
                                     ),
-                                    maxLines: 5,
-                                    ),
-                                ],
+                                  ],
                                 ),
-                            ),
+                              ),
                             ),
                             actions: [
-                            TextButton(
+                              TextButton(
                                 onPressed: () => Navigator.pop(context),
                                 child: const Text('Cancel'),
-                            ),
-                            TextButton(
+                              ),
+                              TextButton(
                                 onPressed: () async {
-                                if (formKey.currentState?.validate() ?? false) {
+                                  if (formKey.currentState?.validate() ?? false) {
                                     await context.read<CustomerProvider>()
-                                    .updateCustomer({
+                                      .updateCustomer({
                                         "phone_number": customer.phoneNumber,
                                         "name": nameController.text,
                                         "businessInsights": {
-                                        "segment": segmentController.text,
-                                        "industry": industryController.text,
-                                        "age": int.parse(ageController.text),
-                                        "aum": double.parse(aumController.text),
-                                        "status": statusController.text
+                                          "segment": segmentController.text,
+                                          "industry": industryController.text,
+                                          "age": int.parse(ageController.text),
+                                          "aum": double.parse(aumController.text),
+                                          "status": statusController.text
                                         },
                                         "financialGoals": financialGoalsController.text
-                                        .split('\n')
-                                        .where((goal) => goal.isNotEmpty)
-                                        .toList()
-                                    });
+                                          .split('\n')
+                                          .where((goal) => goal.isNotEmpty)
+                                          .toList()
+                                      });
                                     Navigator.pop(context);
-                                }
+                                  }
                                 },
                                 child: const Text('Save'),
-                            ),
+                              ),
                             ],
-                        ),
+                          ),
                         );
-                    },
+                      },
                     ),
                     IconButton(
-                    icon: const Icon(Icons.close),
-                    onPressed: () => setState(() => _selectedCustomer = null),
+                      icon: const Icon(Icons.close),
+                      onPressed: () => setState(() => _selectedCustomer = null),
                     ),
-                ],
+                  ],
                 ),
-            ),
+              ),
 
-            // Profile Section
-            Container(
+              // Profile Section
+              Container(
                 margin: const EdgeInsets.all(16),
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                color: Colors.grey[50],
-                borderRadius: BorderRadius.circular(8),
+                  color: Colors.grey[50],
+                  borderRadius: BorderRadius.circular(8),
                 ),
                 child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     const Text(
-                    'Profile',
-                    style: TextStyle(
+                      'Profile',
+                      style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w500,
-                    ),
+                      ),
                     ),
                     const SizedBox(height: 16),
                     _buildBusinessDetail(
-                    'Industry',
-                    customer.businessInsights.industry,
+                      'Industry',
+                      customer.businessInsights.industry,
                     ),
                     _buildBusinessDetail(
-                    'Age',
-                    customer.businessInsights.age.toString(),
+                      'Age',
+                      customer.businessInsights.age.toString(),
                     ),
                     _buildBusinessDetail(
-                    'AUM',
-                    '${customer.businessInsights.aum} billion VND',
+                      'AUM',
+                      '${customer.businessInsights.aum} billion VND',
                     ),
-                ],
+                  ],
                 ),
-            ),
+              ),
 
-            // Financial Goals Section
-            Container(
+              // Financial Goals Section
+              Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
                 child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     const Text(
-                    'Financial Goals',
-                    style: TextStyle(
+                      'Financial Goals',
+                      style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w500,
-                    ),
+                      ),
                     ),
                     const SizedBox(height: 16),
                     SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
                         children: customer.financialGoals.map((goal) => Padding(
-                        padding: const EdgeInsets.only(right: 8),
-                        child: Container(
+                          padding: const EdgeInsets.only(right: 8),
+                          child: Container(
                             padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 6,
+                              horizontal: 12,
+                              vertical: 6,
                             ),
                             decoration: BoxDecoration(
-                            color: Colors.grey[50],
-                            borderRadius: BorderRadius.circular(16),
+                              color: Colors.grey[50],
+                              borderRadius: BorderRadius.circular(16),
                             ),
                             child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
                                 Icon(Icons.track_changes,
-                                    size: 16, color: Colors.purple[600]),
+                                  size: 16, color: Colors.purple[600]),
                                 const SizedBox(width: 8),
                                 Text(goal),
-                            ],
+                              ],
                             ),
-                        ),
+                          ),
                         )).toList(),
+                      ),
                     ),
-                    ),
-                ],
+                  ],
                 ),
-            ),
+              ),
 
-            // Next Best Offers Section
-            if (customer.nbo != null && customer.nbo!.isNotEmpty)
+              // Next Best Offers Section
+              if (customer.nbo != null && customer.nbo!.isNotEmpty)
                 Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(16),
-                child: Column(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                    const Text(
+                      const Text(
                         'Next Best Offers',
                         style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
                         ),
-                    ),
-                    const SizedBox(height: 16),
-                    ...customer.nbo!.map((product) => Container(
+                      ),
+                      const SizedBox(height: 16),
+                      ...customer.nbo!.map((product) => Container(
                         margin: const EdgeInsets.only(bottom: 8),
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                        color: Colors.grey[50],
-                        borderRadius: BorderRadius.circular(8),
+                          color: Colors.grey[50],
+                          borderRadius: BorderRadius.circular(8),
                         ),
                         child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
                             Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
                                 Text(
-                                product.product,
-                                style: const TextStyle(fontWeight: FontWeight.w500),
+                                  product.product,
+                                  style: const TextStyle(fontWeight: FontWeight.w500),
                                 ),
                                 Text(
-                                '${product.confidence.round()}% Match',
-                                style: TextStyle(
+                                  '${product.confidence.round()}% Match',
+                                  style: TextStyle(
                                     color: Colors.green[700],
                                     fontSize: 12,
+                                  ),
                                 ),
-                                ),
-                            ],
+                              ],
                             ),
                             if (product.reasons.isNotEmpty) ...[
-                            const SizedBox(height: 8),
-                            ...product.reasons.map((reason) => Text(
+                              const SizedBox(height: 8),
+                              ...product.reasons.map((reason) => Text(
                                 '• $reason',
                                 style: const TextStyle(fontSize: 12),
-                            )),
+                              )),
                             ],
-                        ],
+                          ],
                         ),
-                    )),
+                      )),
                     ],
-                ),
+                  ),
                 ),
 
-            // Next Best Actions Section  
-            if (customer.nba != null && customer.nba!.isNotEmpty)
+              // Next Best Actions Section  
+              if (customer.nba != null && customer.nba!.isNotEmpty)
                 Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(16),
-                child: Column(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                    const Text(
+                      const Text(
                         'Next Best Actions',
                         style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
                         ),
-                    ),
-                    const SizedBox(height: 16),
-                    ...customer.nba!.map((action) => Container(
+                      ),
+                      const SizedBox(height: 16),
+                      ...customer.nba!.map((action) => Container(
                         margin: const EdgeInsets.only(bottom: 8),
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                        color: Colors.grey[50],
-                        borderRadius: BorderRadius.circular(8),
+                          color: Colors.grey[50],
+                          borderRadius: BorderRadius.circular(8),
                         ),
                         child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
                             Expanded(
-                            child: Column(
+                              child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                Text(
+                                  Text(
                                     action.action,
                                     style: const TextStyle(fontWeight: FontWeight.w500),
-                                ),
-                                Text(
+                                  ),
+                                  Text(
                                     'Due: ${action.deadline}',
                                     style: const TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 12,
+                                      color: Colors.grey,
+                                      fontSize: 12,
                                     ),
-                                ),
+                                  ),
                                 ],
-                            ),
+                              ),
                             ),
                             Container(
-                            padding: const EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                 horizontal: 8,
                                 vertical: 4,
-                            ),
-                            decoration: BoxDecoration(
+                              ),
+                              decoration: BoxDecoration(
                                 color: action.priority == 'high'
-                                ? Colors.red[50]
-                                : Colors.orange[50],
+                                  ? Colors.red[50]
+                                  : Colors.orange[50],
                                 borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: Text(
+                              ),
+                              child: Text(
                                 action.priority.toUpperCase(),
                                 style: TextStyle(
-                                color: action.priority == 'high'
+                                  color: action.priority == 'high'
                                     ? Colors.red[700]
                                     : Colors.orange[700],
-                                fontSize: 12,
+                                  fontSize: 12,
                                 ),
+                              ),
                             ),
-                            ),
-                        ],
+                          ],
                         ),
-                    )),
+                      )),
                     ],
-                ),
+                  ),
                 ),
 
-            // Action Buttons
-            Padding(
+              // Action Buttons
+              Padding(
                 padding: const EdgeInsets.all(16),
                 child: Row(
-                children: [
+                  children: [
                     Expanded(
-                    child: ElevatedButton.icon(
+                      child: ElevatedButton.icon(
                         onPressed: () {},
                         icon: const Icon(Icons.message, size: 16),
                         label: const Text('Follow-up'),
                         style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 12),
+                          padding: const EdgeInsets.symmetric(vertical: 12),
                         ),
-                    ),
+                      ),
                     ),
                     const SizedBox(width: 16),
                     Expanded(
-                    child: OutlinedButton.icon(
+                      child: OutlinedButton.icon(
                         onPressed: () {},
                         icon: const Icon(Icons.update, size: 16),
                         label: const Text('Status'),
                         style: OutlinedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 12),
+                          padding: const EdgeInsets.symmetric(vertical: 12),
                         ),
+                      ),
                     ),
-                    ),
-                ],
+                  ],
                 ),
-            ),
+              ),
             ],
+          ),
         ),
-        ),
-    ),
+      ),
     );
   }
 

@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import '../services/api_service.dart';
 import '../models/conversation_analysis.dart';
 import '../models/ride_interaction.dart';
-import 'dart:developer' as dev;
 
 class ConversationProvider extends ChangeNotifier {
   final ApiService _apiService;
@@ -24,35 +23,15 @@ class ConversationProvider extends ChangeNotifier {
 
     try {
       final data = await _apiService.getInteractions();
-      
-      // Log raw interaction data
-      dev.log(
-        'Raw Interaction Data: $data', 
-        name: 'ConversationProvider.loadInteractions'
-      );
-
       _interactions = data.map((i) {
-        // Log individual interaction parsing
-        dev.log(
-          'Parsing Interaction: $i', 
-          name: 'ConversationProvider.loadInteractions'
-        );
+        debugPrint('Parsing Interaction: $i');
         return RideInteraction.fromJson(i);
       }).toList();
 
-      // Log parsed interactions
-      dev.log(
-        'Parsed Interactions: ${_interactions.length}', 
-        name: 'ConversationProvider.loadInteractions'
-      );
-
+      debugPrint('Parsed Interactions: ${_interactions.length}');
       _error = null;
     } catch (e) {
-      dev.log(
-        'Error loading interactions: $e', 
-        name: 'ConversationProvider.loadInteractions',
-        error: e
-      );
+      debugPrint('Error loading interactions: $e');
       _error = e.toString();
     } finally {
       _isLoading = false;

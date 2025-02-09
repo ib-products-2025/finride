@@ -172,6 +172,178 @@
       ],
       "customer_name": "Son Le",
       "ride_date": "2025-02-08"
+    },
+    {
+      "interaction_id": 5,
+      "status": "in_review",
+      "checkpoints": [
+        {
+          "category": "Product Discussion",
+          "items": [
+            {
+              "text": "Clear product term disclosure",
+              "required": true,
+              "completed": false
+            },
+            {
+              "text": "Fee structure explanation",
+              "required": true,
+              "completed": false
+            },
+            {
+              "text": "Risk disclosure",
+              "required": true,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "category": "Customer Protection",
+          "items": [
+            {
+              "text": "Explicit consent obtained",
+              "required": true,
+              "completed": false
+            },
+            {
+              "text": "Data privacy maintained",
+              "required": true,
+              "completed": false
+            }
+          ]
+        }
+      ],
+      "customer_name": "Nguyen Van 2",
+      "ride_date": "2025-02-09"
+    },
+    {
+      "interaction_id": 6,
+      "status": "in_review",
+      "checkpoints": [
+        {
+          "category": "Product Discussion",
+          "items": [
+            {
+              "text": "Clear product term disclosure",
+              "required": true,
+              "completed": false
+            },
+            {
+              "text": "Fee structure explanation",
+              "required": true,
+              "completed": false
+            },
+            {
+              "text": "Risk disclosure",
+              "required": true,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "category": "Customer Protection",
+          "items": [
+            {
+              "text": "Explicit consent obtained",
+              "required": true,
+              "completed": false
+            },
+            {
+              "text": "Data privacy maintained",
+              "required": true,
+              "completed": false
+            }
+          ]
+        }
+      ],
+      "customer_name": "Nguyen Van 3",
+      "ride_date": "2025-02-09"
+    },
+    {
+      "interaction_id": 7,
+      "status": "in_review",
+      "checkpoints": [
+        {
+          "category": "Product Discussion",
+          "items": [
+            {
+              "text": "Clear product term disclosure",
+              "required": true,
+              "completed": false
+            },
+            {
+              "text": "Fee structure explanation",
+              "required": true,
+              "completed": false
+            },
+            {
+              "text": "Risk disclosure",
+              "required": true,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "category": "Customer Protection",
+          "items": [
+            {
+              "text": "Explicit consent obtained",
+              "required": true,
+              "completed": false
+            },
+            {
+              "text": "Data privacy maintained",
+              "required": true,
+              "completed": false
+            }
+          ]
+        }
+      ],
+      "customer_name": "Nguyen Van 4",
+      "ride_date": "2025-02-09"
+    },
+    {
+      "interaction_id": 8,
+      "status": "in_review",
+      "checkpoints": [
+        {
+          "category": "Product Discussion",
+          "items": [
+            {
+              "text": "Clear product term disclosure",
+              "required": true,
+              "completed": false
+            },
+            {
+              "text": "Fee structure explanation",
+              "required": true,
+              "completed": false
+            },
+            {
+              "text": "Risk disclosure",
+              "required": true,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "category": "Customer Protection",
+          "items": [
+            {
+              "text": "Explicit consent obtained",
+              "required": true,
+              "completed": false
+            },
+            {
+              "text": "Data privacy maintained",
+              "required": true,
+              "completed": false
+            }
+          ]
+        }
+      ],
+      "customer_name": "Nguyen Van 5",
+      "ride_date": "2025-02-10"
     }
   ],
   "previous_compliance_checks": [],

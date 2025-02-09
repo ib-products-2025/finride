@@ -54,5 +54,66 @@
     ],
     "nbo": [],
     "nba": []
+  },
+  {
+    "phone_number": "0988359920",
+    "name": "Nguyen Van 2",
+    "businessInsights": {},
+    "financialGoals": [
+      "Bonds",
+      " TD",
+      " Insurance"
+    ],
+    "nbo": [],
+    "nba": []
+  },
+  {
+    "phone_number": "0988359921",
+    "name": "Nguyen Van 3",
+    "businessInsights": {
+      "segment": "",
+      "age": 0,
+      "aum": 0.0,
+      "industry": "",
+      "status": "low"
+    },
+    "financialGoals": [
+      "Loan",
+      " TD"
+    ],
+    "nbo": [],
+    "nba": []
+  },
+  {
+    "phone_number": "0988359923",
+    "name": "Nguyen Van 4",
+    "businessInsights": {
+      "segment": "Household",
+      "age": 45,
+      "aum": 2000000000.0,
+      "industry": "Services",
+      "status": "low"
+    },
+    "financialGoals": [
+      "Loan"
+    ],
+    "nbo": [],
+    "nba": []
+  },
+  {
+    "phone_number": "0988359924",
+    "name": "Nguyen Van 5",
+    "businessInsights": {
+      "segment": "Household",
+      "age": 43,
+      "aum": 500000000.0,
+      "industry": "Retail",
+      "status": null
+    },
+    "financialGoals": [
+      "Saving"
+    ],
+    "nbo": [],
+    "nba": []
   }
 ]

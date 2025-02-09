@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Optional, Dict, Any
 from pydantic import BaseModel
-from datetime import datetime, timedelta  # Add timedelta import
+from datetime import datetime, timedelta
 import json
 from pathlib import Path
 
@@ -112,12 +112,19 @@ async def create_or_update_customer(customer: dict):
     phone_number = customer["phone_number"]
     customers = load_data("customers.json")
     
-    # Use received data directly, no default values
+    # Ensure businessInsights has all required fields
+    business_insights = customer.get("businessInsights", {})
+    business_insights.setdefault("segment", "")
+    business_insights.setdefault("age", 0)
+    business_insights.setdefault("aum", 0.0)
+    business_insights.setdefault("industry", "")
+    business_insights.setdefault("status", "medium")
+
     new_customer = {
         "phone_number": phone_number,
         "name": customer["name"],
-        "businessInsights": customer["businessInsights"],
-        "financialGoals": customer["financialGoals"],
+        "businessInsights": business_insights,
+        "financialGoals": customer.get("financialGoals", []),
         "nbo": customer.get("nbo", []),
         "nba": customer.get("nba", [])
     }
@@ -199,7 +206,18 @@ async def list_products():
 
 @app.get("/interactions")
 async def get_interactions() -> List[RideInteraction]:
-    return load_data("interactions.json")
+    interactions = load_data("interactions.json")
+    # Ensure all required fields are included in the response
+    for interaction in interactions:
+        customer = interaction["customer"]
+        business_insights = customer.get("businessInsights", {})
+        business_insights.setdefault("segment", "")
+        business_insights.setdefault("age", 0)
+        business_insights.setdefault("aum", 0.0)
+        business_insights.setdefault("industry", "")
+        business_insights.setdefault("status", "")
+        customer["businessInsights"] = business_insights
+    return interactions
 
 @app.post("/interactions/{ride_id}/analysis")
 async def save_analysis(ride_id: int, analysis: ConversationAnalysis):

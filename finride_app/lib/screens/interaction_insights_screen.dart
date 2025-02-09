@@ -503,7 +503,6 @@ class _InteractionInsightsScreenState extends State<InteractionInsightsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
       body: Column(
         children: [
           _buildHeader(),
@@ -523,57 +522,13 @@ class _InteractionInsightsScreenState extends State<InteractionInsightsScreen> {
                   return const Center(child: Text('No interactions found'));
                 }
 
-                final latestInteraction = interactions.last;
-                
                 return SingleChildScrollView(
                   padding: const EdgeInsets.all(16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              latestInteraction.customer.name,
-                              style: const TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            Text(
-                              '${latestInteraction.date} • ${latestInteraction.platform}',
-                              style: const TextStyle(color: Colors.grey),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      if (latestInteraction.conversationAnalysis?.summary != null)
-                        ...latestInteraction.conversationAnalysis!.summary.map((point) =>
-                          Container(
-                            margin: const EdgeInsets.only(bottom: 8),
-                            padding: const EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Icon(Icons.circle, size: 8, color: Theme.of(context).primaryColor),
-                                const SizedBox(width: 8),
-                                Expanded(child: Text(point)),
-                              ],
-                            ),
-                          ),
-                        ),
-                    ],
+                    children: interactions.map((interaction) {
+                      return _buildRideCard(interaction);
+                    }).toList(),
                   ),
                 );
               },

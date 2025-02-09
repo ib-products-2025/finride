@@ -779,19 +779,27 @@ class _EnhancedHomeScreenState extends State<EnhancedHomeScreen> {
   // Add handler method
   void _handleCustomerData() async {
     try {
-        final customer = await _apiService.createOrUpdateCustomer({
+      final customer = await _apiService.createOrUpdateCustomer({
         "phone_number": _phoneController.text,
         "name": _nameController.text,
-        ..._customerData,
-        });
-        
-        setState(() => _ridePhase = RidePhase.completed);
+        "businessInsights": {
+          "segment": _customerData['segment'],
+          "age": _customerData['age'],
+          "aum": _customerData['aum'],
+          "industry": _customerData['industry'],
+          "status": _customerData['status'],
+        },
+        "financialGoals": _customerData['financialGoals'],
+        // Add any additional fields if necessary
+      });
+
+      setState(() => _ridePhase = RidePhase.completed);
     } catch (e) {
-        print('Error saving customer data: $e');
-        // Show error to user
-        ScaffoldMessenger.of(context).showSnackBar(
+      print('Error saving customer data: $e');
+      // Show error to user
+      ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error saving customer data: $e')),
-        );
+      );
     }
   }
 

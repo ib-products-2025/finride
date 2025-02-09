@@ -160,5 +160,123 @@
         "status": "pending"
       }
     ]
+  },
+  {
+    "id": 5,
+    "customer": {
+      "phone_number": "0988359920",
+      "name": "Nguyen Van 2",
+      "businessInsights": {},
+      "financialGoals": [],
+      "nbo": [],
+      "nba": []
+    },
+    "timestamp": "2025-02-09T23:32:21.113755",
+    "date": "2025-02-09",
+    "platform": "Be",
+    "status": "high_potential",
+    "analysisComplete": false,
+    "conversationAnalysis": null,
+    "nextSteps": [
+      {
+        "action": "Follow up call",
+        "priority": "high",
+        "deadline": "2025-02-12",
+        "status": "pending"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "customer": {
+      "phone_number": "0988359921",
+      "name": "Nguyen Van 3",
+      "businessInsights": {
+        "segment": "",
+        "age": 0,
+        "aum": 0.0,
+        "industry": "",
+        "status": ""
+      },
+      "financialGoals": [],
+      "nbo": [],
+      "nba": []
+    },
+    "timestamp": "2025-02-09T23:50:57.053097",
+    "date": "2025-02-09",
+    "platform": "Xanh SM",
+    "status": "high_potential",
+    "analysisComplete": false,
+    "conversationAnalysis": null,
+    "nextSteps": [
+      {
+        "action": "Follow up call",
+        "priority": "high",
+        "deadline": "2025-02-12",
+        "status": "pending"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "customer": {
+      "phone_number": "0988359923",
+      "name": "Nguyen Van 4",
+      "businessInsights": {
+        "segment": "",
+        "age": 0,
+        "aum": 0.0,
+        "industry": "",
+        "status": ""
+      },
+      "financialGoals": [],
+      "nbo": [],
+      "nba": []
+    },
+    "timestamp": "2025-02-09T23:58:16.360671",
+    "date": "2025-02-09",
+    "platform": "Grab",
+    "status": "high_potential",
+    "analysisComplete": false,
+    "conversationAnalysis": null,
+    "nextSteps": [
+      {
+        "action": "Follow up call",
+        "priority": "high",
+        "deadline": "2025-02-12",
+        "status": "pending"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "customer": {
+      "phone_number": "0988359924",
+      "name": "Nguyen Van 5",
+      "businessInsights": {
+        "segment": "",
+        "age": 0,
+        "aum": 0.0,
+        "industry": "",
+        "status": "medium"
+      },
+      "financialGoals": [],
+      "nbo": [],
+      "nba": []
+    },
+    "timestamp": "2025-02-10T00:17:24.004064",
+    "date": "2025-02-10",
+    "platform": "Xanh SM",
+    "status": "high_potential",
+    "analysisComplete": false,
+    "conversationAnalysis": null,
+    "nextSteps": [
+      {
+        "action": "Follow up call",
+        "priority": "high",
+        "deadline": "2025-02-13",
+        "status": "pending"
+      }
+    ]
   }
 ]
