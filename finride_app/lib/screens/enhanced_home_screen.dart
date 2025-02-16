@@ -34,6 +34,7 @@ class _EnhancedHomeScreenState extends State<EnhancedHomeScreen> {
   int _recordingDuration = 0;
 
   late final ApiService _apiService;
+  late final InstantAssistantService _assistantService;
 
   Widget _buildHeader() {
     return Consumer<VoiceProvider>(
@@ -241,9 +242,15 @@ class _EnhancedHomeScreenState extends State<EnhancedHomeScreen> {
           ),
           const SizedBox(height: 16),
           ElevatedButton(
-            onPressed: () {
-              setState(() => _ridePhase = RidePhase.inRide);
-              assistantService.startRecordingAssistant(); // Start recording when the button is pressed
+            onPressed: () async {
+              if (await Permission.microphone.request().isGranted) {
+                setState(() {
+                  _ridePhase = RidePhase.inRide;
+                });
+                _assistantService.startRecordingAssistant(); // Start recording when the button is pressed
+              } else {
+                throw Exception('Microphone permission not granted');
+              }
             },
             child: const Padding(
               padding: EdgeInsets.all(16),
@@ -321,7 +328,7 @@ class _EnhancedHomeScreenState extends State<EnhancedHomeScreen> {
           ),
           const SizedBox(height: 16),
           ElevatedButton(
-            onPressed: () => _completeRide(assistantService),
+            onPressed: () => _completeRide(),
             style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green[700],
             ),
@@ -840,8 +847,8 @@ class _EnhancedHomeScreenState extends State<EnhancedHomeScreen> {
         // Add any additional fields if necessary
       });
 
-      final interactionData = await assistantService._chatGptProcess(
-         assistantService.liveTranscript,
+      final interactionData = await _assistantService.chatGptProcess(
+         _assistantService.liveTranscript,
          "Generate interaction data model from the conversation:"
       );
 
@@ -850,7 +857,7 @@ class _EnhancedHomeScreenState extends State<EnhancedHomeScreen> {
           "timestamp": DateTime.now().toIso8601String(),
           "date": DateTime.now().toString().split(' ')[0],
           "platform": _platform,
-          ...interactionData,
+          ...interactionData as Map<String, dynamic>,
       });
 
       setState(() => _ridePhase = RidePhase.completed);

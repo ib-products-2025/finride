@@ -4,19 +4,20 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:convert';
-import 'package:audio_recorder/audio_recorder.dart';
+import 'package:flutter_sound/flutter_sound.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:path_provider/path_provider.dart';
 
 /// A service class to manage real-time audio recording, transcription, and
 /// post-processing (summary, compliance extraction) via OpenAI Whisper API.
 class InstantAssistantService extends ChangeNotifier {
   // The actual API key, as requested.
-  final String openAiApiKey =
-      "";
+  final String openAiApiKey = dotenv.env['OPENAI_API_KEY'] ?? "";
 
   bool _isRecording = false;
   bool get isRecording => _isRecording;
 
-  StreamSubscription<List<int>>? _audioSub;
+  FlutterSoundRecorder? _audioRecorder;
   final List<int> _audioBuffer = [];
 
   String _liveTranscript = '';
@@ -28,6 +29,15 @@ class InstantAssistantService extends ChangeNotifier {
   String _complianceDetails = '';
   String get complianceDetails => _complianceDetails;
 
+  InstantAssistantService() {
+    _audioRecorder = FlutterSoundRecorder();
+    _initializeRecorder();
+  }
+
+  Future<void> _initializeRecorder() async {
+    await _audioRecorder!.openRecorder();
+  }
+
   /// Starts the audio capture and records data into _audioBuffer, to be sent to
   /// the OpenAI Whisper API upon completion. This sample uses actual microphone data capture.
   Future<void> startRecordingAssistant() async {
@@ -38,11 +48,17 @@ class InstantAssistantService extends ChangeNotifier {
     // Request microphone permission
     if (await Permission.microphone.request().isGranted) {
       // Start capturing audio from the microphone
-      _audioSub = _captureAudioFromMicrophone().listen((chunk) {
-        _audioBuffer.addAll(chunk);
-        // Optionally, perform live partial transcription
-        // if you have a streaming approach.
-        _liveTranscript = "[Recording audio ...]";
+      Directory tempDir = await getTemporaryDirectory();
+      String tempPath = '${tempDir.path}/temp.aac';
+
+      await _audioRecorder!.startRecorder(
+        toFile: tempPath,
+        codec: Codec.aacADTS,
+      );
+
+      _audioRecorder!.onProgress!.listen((e) {
+        _audioBuffer.addAll(e.buffer);
+        _liveTranscript = "[Recording audio ... ${e.duration.inSeconds.toString()} seconds]";
         notifyListeners();
       });
     } else {
@@ -60,9 +76,13 @@ class InstantAssistantService extends ChangeNotifier {
     _isRecording = false;
     notifyListeners();
 
-    // Cancel the subscription and finalize the audio buffer.
-    await _audioSub?.cancel();
-    _audioSub = null;
+    // Stop the recorder and get the file path
+    String? path = await _audioRecorder!.stopRecorder();
+    if (path != null) {
+      File audioFile = File(path);
+      List<int> audioBytes = await audioFile.readAsBytes();
+      _audioBuffer.addAll(audioBytes);
+    }
 
     try {
       // STEP 1: Send audio to OpenAI Whisper for transcription
@@ -71,11 +91,11 @@ class InstantAssistantService extends ChangeNotifier {
 
       // STEP 2: Generate summary and compliance details from the transcribed text.
       // This step calls GPT or any text processing endpoint from OpenAI.
-      _interactionSummary = await _chatGptProcess(
+      _interactionSummary = await chatGptProcess(
         transcription,
         "Provide a concise summary of the user's conversation:"
       );
-      _complianceDetails = await _chatGptProcess(
+      _complianceDetails = await chatGptProcess(
         transcription,
         "Extract any compliance-related issues or statements from the conversation:"
       );
@@ -117,7 +137,7 @@ class InstantAssistantService extends ChangeNotifier {
 
   /// Example of calling GPT endpoint to do text processing (summary, compliance, etc.)
   /// using OpenAI's ChatCompletion or Completion API. This is minimal; adapt as needed.
-  Future<String> _chatGptProcess(String transcript, String prompt) async {
+  Future<String> chatGptProcess(String transcript, String prompt) async {
     const chatGptUrl = "https://api.openai.com/v1/chat/completions";
     final headers = {
       'Content-Type': 'application/json',
@@ -145,18 +165,10 @@ class InstantAssistantService extends ChangeNotifier {
     return '';
   }
 
-  /// Captures audio data from the device's microphone.
-  Stream<List<int>> _captureAudioFromMicrophone() async* {
-    if (await AudioRecorder.hasPermissions) {
-      await AudioRecorder.start();
-      while (_isRecording) {
-        final recording = await AudioRecorder.current();
-        yield recording.buffer;
-        await Future.delayed(const Duration(milliseconds: 200));
-      }
-      await AudioRecorder.stop();
-    } else {
-      throw Exception('Microphone permission not granted');
-    }
+  @override
+  void dispose() {
+    _audioRecorder!.closeRecorder();
+    _audioRecorder = null;
+    super.dispose();
   }
 }
