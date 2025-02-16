@@ -377,7 +377,10 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
                     ),
                     IconButton(
                       icon: const Icon(Icons.close),
-                      onPressed: () => setState(() => _selectedCustomer = null),
+                      onPressed: () {
+                        setState(() => _selectedCustomer = null);
+                        context.read<CustomerProvider>().loadCustomers(); // Reload customers to reflect new values
+                      },
                     ),
                   ],
                 ),

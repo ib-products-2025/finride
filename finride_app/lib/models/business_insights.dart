@@ -26,7 +26,7 @@ class BusinessInsights {
   Map<String, dynamic> toJson() => {
     'segment': segment,
     'age': age,
-    'aum': aum,
+    'aum': double.parse(aum.toStringAsFixed(2)),
     'industry': industry,
     'status': status,
   };
