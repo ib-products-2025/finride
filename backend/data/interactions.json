@@ -402,5 +402,36 @@
         "status": "pending"
       }
     ]
+  },
+  {
+    "id": 13,
+    "customer": {
+      "phone_number": "0988359933",
+      "name": "Nguyen Van 33",
+      "businessInsights": {
+        "segment": "",
+        "age": 0,
+        "aum": 0.0,
+        "industry": "",
+        "status": "medium"
+      },
+      "financialGoals": [],
+      "nbo": [],
+      "nba": []
+    },
+    "timestamp": "2025-02-16T17:26:56.498049",
+    "date": "2025-02-16",
+    "platform": "Xanh SM",
+    "status": "high_potential",
+    "analysisComplete": false,
+    "conversationAnalysis": null,
+    "nextSteps": [
+      {
+        "action": "Follow up call",
+        "priority": "high",
+        "deadline": "2025-02-19",
+        "status": "pending"
+      }
+    ]
   }
 ]

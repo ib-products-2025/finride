@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import '../providers/voice_provider.dart';
 import '../providers/compliance_provider.dart';
 import '../services/api_service.dart';
+import '../services/instant_assistant_service.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class RidePhase {
   static const String idle = 'idle';
@@ -239,7 +241,10 @@ class _EnhancedHomeScreenState extends State<EnhancedHomeScreen> {
           ),
           const SizedBox(height: 16),
           ElevatedButton(
-            onPressed: () => setState(() => _ridePhase = RidePhase.inRide),
+            onPressed: () {
+              setState(() => _ridePhase = RidePhase.inRide);
+              assistantService.startRecordingAssistant(); // Start recording when the button is pressed
+            },
             child: const Padding(
               padding: EdgeInsets.all(16),
               child: Row(
@@ -258,6 +263,7 @@ class _EnhancedHomeScreenState extends State<EnhancedHomeScreen> {
   }
 
   Widget _buildInRideState() {
+    final assistantService = Provider.of<InstantAssistantService>(context, listen: true);
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -287,6 +293,15 @@ class _EnhancedHomeScreenState extends State<EnhancedHomeScreen> {
                         fontFamily: 'Courier',
                       ),
                     ),
+                    const SizedBox(height: 16),
+                    Text(
+                      assistantService.liveTranscript.isEmpty
+                          ? 'No transcript yet.'
+                          : assistantService.liveTranscript,
+                      style: const TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
                   ],
                 ),
                 const SizedBox(height: 16),
@@ -306,7 +321,7 @@ class _EnhancedHomeScreenState extends State<EnhancedHomeScreen> {
           ),
           const SizedBox(height: 16),
           ElevatedButton(
-            onPressed: _completeRide,
+            onPressed: () => _completeRide(assistantService),
             style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green[700],
             ),
@@ -764,6 +779,12 @@ class _EnhancedHomeScreenState extends State<EnhancedHomeScreen> {
     }
   }
 
+  void requestMicrophonePermission() async {
+    if (await Permission.microphone.request().isGranted) {
+      // The microphone permission is granted.
+    }
+  }
+
   void _startRecordingTimer() {
     Future.delayed(const Duration(seconds: 1), () {
       if (mounted && _ridePhase == RidePhase.inRide) {
@@ -817,6 +838,19 @@ class _EnhancedHomeScreenState extends State<EnhancedHomeScreen> {
         },
         "financialGoals": _customerData['financialGoals'],
         // Add any additional fields if necessary
+      });
+
+      final interactionData = await assistantService._chatGptProcess(
+         assistantService.liveTranscript,
+         "Generate interaction data model from the conversation:"
+      );
+
+      final interaction = await _apiService.createNewInteraction({
+          "customer": customer,
+          "timestamp": DateTime.now().toIso8601String(),
+          "date": DateTime.now().toString().split(' ')[0],
+          "platform": _platform,
+          ...interactionData,
       });
 
       setState(() => _ridePhase = RidePhase.completed);

@@ -366,6 +366,7 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
                                           .toList()
                                       });
                                     Navigator.pop(context);
+                                    Navigator.pushReplacementNamed(context, '/customers');
                                   }
                                 },
                                 child: const Text('Save'),

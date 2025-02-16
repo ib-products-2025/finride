@@ -22,8 +22,8 @@
     "businessInsights": {
       "segment": "Household",
       "industry": "Technology",
-      "age": 35,
-      "aum": 5.1,
+      "age": 42,
+      "aum": 11.1,
       "status": "medium"
     },
     "financialGoals": [
@@ -150,6 +150,20 @@
       "Insurance",
       " Stock"
     ],
+    "nbo": [],
+    "nba": []
+  },
+  {
+    "phone_number": "0988359933",
+    "name": "Nguyen Van 33",
+    "businessInsights": {
+      "segment": "",
+      "age": 0,
+      "aum": 0.0,
+      "industry": "",
+      "status": "medium"
+    },
+    "financialGoals": [],
     "nbo": [],
     "nba": []
   }
