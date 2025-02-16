@@ -4,53 +4,32 @@
     "name": "Hai Pham",
     "businessInsights": {
       "segment": "Payroll",
-      "age": 42,
-      "aum": 5000000000,
       "industry": "Retail",
+      "age": 42,
+      "aum": 5.0,
       "status": "high_potential"
     },
     "financialGoals": [
       "Business expansion capital",
       "Better cash flow management"
     ],
-    "nbo": [
-      {
-        "product": "Premium Payroll Solution",
-        "confidence": 0.92,
-        "reasons": [
-          "High AUM indicates large employee base",
-          "Current system needs upgrade",
-          "Looking for efficiency"
-        ],
-        "features": [
-          "Automated salary processing",
-          "Tax management",
-          "Employee self-service portal"
-        ]
-      }
-    ],
-    "nba": [
-      {
-        "action": "Schedule product demo",
-        "priority": "high",
-        "deadline": "2024-02-12",
-        "status": "pending"
-      }
-    ]
+    "nbo": [],
+    "nba": []
   },
   {
     "phone_number": "0988359922",
     "name": "Son Le",
     "businessInsights": {
-      "segment": "Business Owner",
-      "age": 35,
-      "aum": 0,
-      "industry": "Retail",
+      "segment": "Household",
+      "industry": "Technology",
+      "age": 37,
+      "aum": 1.0999999999999999,
       "status": "medium"
     },
     "financialGoals": [
       "TD",
-      " Stock"
+      "Stock",
+      "Saving"
     ],
     "nbo": [],
     "nba": []
@@ -58,7 +37,13 @@
   {
     "phone_number": "0988359920",
     "name": "Nguyen Van 2",
-    "businessInsights": {},
+    "businessInsights": {
+      "segment": "Household",
+      "industry": "Services",
+      "age": 30,
+      "aum": 2.0,
+      "status": "low"
+    },
     "financialGoals": [
       "Bonds",
       " TD",
@@ -71,10 +56,10 @@
     "phone_number": "0988359921",
     "name": "Nguyen Van 3",
     "businessInsights": {
-      "segment": "",
-      "age": 0,
-      "aum": 0.0,
-      "industry": "",
+      "segment": "Payroll",
+      "industry": "Manufacturing",
+      "age": 27,
+      "aum": 0.7,
       "status": "low"
     },
     "financialGoals": [
@@ -89,9 +74,9 @@
     "name": "Nguyen Van 4",
     "businessInsights": {
       "segment": "Household",
-      "age": 45,
-      "aum": 2000000000.0,
       "industry": "Services",
+      "age": 45,
+      "aum": 2.0,
       "status": "low"
     },
     "financialGoals": [
@@ -105,13 +90,65 @@
     "name": "Nguyen Van 5",
     "businessInsights": {
       "segment": "Household",
-      "age": 43,
-      "aum": 500000000.0,
       "industry": "Retail",
-      "status": null
+      "age": 43,
+      "aum": 0.5,
+      "status": "Unknown"
     },
     "financialGoals": [
       "Saving"
+    ],
+    "nbo": [],
+    "nba": []
+  },
+  {
+    "phone_number": "0988359929",
+    "name": "Nguyen Van 29",
+    "businessInsights": {
+      "segment": "Payroll",
+      "industry": "Technology",
+      "age": 45,
+      "aum": 0.5,
+      "status": "medium"
+    },
+    "financialGoals": [
+      "Stock",
+      "Saving"
+    ],
+    "nbo": [],
+    "nba": []
+  },
+  {
+    "phone_number": "0988359931",
+    "name": "Nguyen Van 31",
+    "businessInsights": {
+      "segment": "Payroll",
+      "age": 37,
+      "aum": 1.6,
+      "industry": "Technology",
+      "status": null
+    },
+    "financialGoals": [
+      "Credit card",
+      " Stock",
+      " Bond"
+    ],
+    "nbo": [],
+    "nba": []
+  },
+  {
+    "phone_number": "0988359932",
+    "name": "Nguyen Van 32",
+    "businessInsights": {
+      "segment": "Business Owner",
+      "age": 46,
+      "aum": 9.9,
+      "industry": "Manufacturing",
+      "status": null
+    },
+    "financialGoals": [
+      "Insurance",
+      " Stock"
     ],
     "nbo": [],
     "nba": []

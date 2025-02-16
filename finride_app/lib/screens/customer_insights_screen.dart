@@ -15,10 +15,14 @@ class CustomerInsightsScreen extends StatefulWidget {
 class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
   String _searchQuery = '';
   Customer? _selectedCustomer;
+  late double _age;
+  late double _aum;
 
   @override
   void initState() {
     super.initState();
+    _age = 0;
+    _aum = 0;
     Future.microtask(() {
       context.read<CustomerProvider>().loadCustomers();
     });
@@ -81,7 +85,11 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: InkWell(
-        onTap: () => setState(() => _selectedCustomer = customer),
+        onTap: () => setState(() {
+          _selectedCustomer = customer;
+          _age = customer.businessInsights.age.toDouble();
+          _aum = customer.businessInsights.aum;
+        }),
         child: Container(
           decoration: BoxDecoration(
             border: Border(
@@ -179,8 +187,6 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
     final nameController = TextEditingController(text: customer.name);
     final segmentController = TextEditingController(text: customer.businessInsights.segment);
     final industryController = TextEditingController(text: customer.businessInsights.industry);
-    final ageController = TextEditingController(text: customer.businessInsights.age.toString());
-    final aumController = TextEditingController(text: customer.businessInsights.aum.toString());
     final statusController = TextEditingController(text: customer.businessInsights.status);
     final financialGoalsController = TextEditingController(
       text: customer.financialGoals.join('\n')
@@ -244,43 +250,80 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
                                     ),
                                     const SizedBox(height: 16),
                                     DropdownButtonFormField<String>(
-                                      value: segmentController.text,
+                                      value: segmentController.text.isEmpty ? 'Unknown' : segmentController.text,
                                       decoration: const InputDecoration(labelText: 'Segment'),
-                                      items: ['Business Owner', 'Household', 'Payroll']
+                                      items: ['Business Owner', 'Household', 'Payroll', 'Unknown']
                                         .map((s) => DropdownMenuItem(value: s, child: Text(s)))
                                         .toList(),
                                       onChanged: (value) => segmentController.text = value!,
                                     ),
                                     const SizedBox(height: 16),
                                     DropdownButtonFormField<String>(
-                                      value: industryController.text,
+                                      value: industryController.text.isEmpty ? 'Unknown' : industryController.text,
                                       decoration: const InputDecoration(labelText: 'Industry'),
-                                      items: ['Retail', 'Technology', 'Manufacturing', 'Services']
+                                      items: ['Retail', 'Technology', 'Manufacturing', 'Services', 'Unknown']
                                         .map((i) => DropdownMenuItem(value: i, child: Text(i)))
                                         .toList(),
                                       onChanged: (value) => industryController.text = value!,
                                     ),
                                     const SizedBox(height: 16),
-                                    TextFormField(
-                                      controller: ageController,
-                                      decoration: const InputDecoration(labelText: 'Age'),
-                                      keyboardType: TextInputType.number,
-                                      validator: (value) => 
-                                        value?.isEmpty ?? true ? 'Required' : null,
-                                    ),
-                                    const SizedBox(height: 16),
-                                    TextFormField(
-                                      controller: aumController,
-                                      decoration: const InputDecoration(labelText: 'AUM (billion VND)'),
-                                      keyboardType: TextInputType.number,
-                                      validator: (value) => 
-                                        value?.isEmpty ?? true ? 'Required' : null,
+                                    StatefulBuilder(
+                                      builder: (context, setStateDialog) {
+                                        return Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Age: ${_age.toInt()}',
+                                                  style: const TextStyle(fontSize: 16),
+                                                ),
+                                                Slider(
+                                                  value: _age,
+                                                  min: 0,
+                                                  max: 100,
+                                                  divisions: 100,
+                                                  label: _age.toString(),
+                                                  onChanged: (value) {
+                                                    setStateDialog(() {
+                                                      _age = value;
+                                                    });
+                                                  },
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(height: 16),
+                                            Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'AUM: ${_aum.toStringAsFixed(1)} billion VND',
+                                                  style: const TextStyle(fontSize: 16),
+                                                ),
+                                                Slider(
+                                                  value: _aum,
+                                                  min: 0,
+                                                  max: 100,
+                                                  divisions: 1000,
+                                                  label: _aum.toStringAsFixed(1),
+                                                  onChanged: (value) {
+                                                    setStateDialog(() {
+                                                      _aum = value;
+                                                    });
+                                                  },
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        );
+                                      },
                                     ),
                                     const SizedBox(height: 16),
                                     DropdownButtonFormField<String>(
-                                      value: statusController.text,
+                                      value: statusController.text.isEmpty ? 'Unknown' : statusController.text,
                                       decoration: const InputDecoration(labelText: 'Status'),
-                                      items: ['high_potential', 'medium', 'low']
+                                      items: ['high_potential', 'medium', 'low', 'Unknown']
                                         .map((s) => DropdownMenuItem(value: s, child: Text(s)))
                                         .toList(),
                                       onChanged: (value) => statusController.text = value!,
@@ -313,8 +356,8 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
                                         "businessInsights": {
                                           "segment": segmentController.text,
                                           "industry": industryController.text,
-                                          "age": int.parse(ageController.text),
-                                          "aum": double.parse(aumController.text),
+                                          "age": _age.toInt(),
+                                          "aum": _aum,
                                           "status": statusController.text
                                         },
                                         "financialGoals": financialGoalsController.text

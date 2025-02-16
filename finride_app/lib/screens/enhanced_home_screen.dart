@@ -677,22 +677,48 @@ class _EnhancedHomeScreenState extends State<EnhancedHomeScreen> {
                     onChanged: (value) => _customerData['segment'] = value,
                 ),
                 const SizedBox(height: 16),
-                TextFormField(
-                    decoration: const InputDecoration(
-                    labelText: 'Age',
-                    border: OutlineInputBorder(),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Age: ${_customerData['age']?.toString() ?? ""}',
+                      style: const TextStyle(fontSize: 16),
                     ),
-                    keyboardType: TextInputType.number,
-                    onChanged: (value) => _customerData['age'] = int.parse(value),
+                    Slider(
+                      value: _customerData['age']?.toDouble() ?? 0,
+                      min: 0,
+                      max: 100,
+                      divisions: 100,
+                      label: _customerData['age']?.toString(),
+                      onChanged: (value) {
+                        setState(() {
+                          _customerData['age'] = value.toInt();
+                        });
+                      },
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 16),
-                TextFormField(
-                    decoration: const InputDecoration(
-                    labelText: 'AUM (VND)',
-                    border: OutlineInputBorder(),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'AUM: ${_customerData['aum']?.toStringAsFixed(1) ?? ""} billion VND',
+                      style: const TextStyle(fontSize: 16),
                     ),
-                    keyboardType: TextInputType.number,
-                    onChanged: (value) => _customerData['aum'] = double.parse(value),
+                    Slider(
+                      value: _customerData['aum']?.toDouble() ?? 0,
+                      min: 0,
+                      max: 100,
+                      divisions: 1000,
+                      label: _customerData['aum']?.toStringAsFixed(1),
+                      onChanged: (value) {
+                        setState(() {
+                          _customerData['aum'] = value;
+                        });
+                      },
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 16),
                 DropdownButtonFormField<String>(
